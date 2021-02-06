@@ -1,12 +1,17 @@
-import {Container} from 'react-bootstrap';
 import React from "react";
 import NavButton from "./NavButton";
 
-export default function StartPage(props) {
+export default function StartPage() {
+    const pin = 9468;
     return (
-        <Container>
-            <h2>Your pin number is: {props.pin}</h2>
+        <>
+            <h2
+                style={{
+                    textAlign: "center"
+                }}
+            >
+                Your pin number is: {pin}</h2>
             <NavButton to={"/keynum"}/>
-        </Container>
+        </>
     )
 }

@@ -10,8 +10,19 @@ export default function NavButton(props) {
     }
 
     return (
-        <Button className="NavButton"
-                onClick={navigate}>
-        </Button>
+        <div
+            style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+            }}
+        >
+            <Button className="NavButton"
+                    variant="primary" size="lg"
+                    onClick={navigate}
+            >
+                Start
+            </Button>
+        </div>
     )
 }
