@@ -1,5 +1,5 @@
 import React from "react";
-import NavButton from "./NavButton";
+import NavButton from "./EventButton";
 
 export default function StartPage() {
     const pin = 9468;
@@ -11,7 +11,11 @@ export default function StartPage() {
                 }}
             >
                 Your pin number is: {pin}</h2>
-            <NavButton to={"/keynum"}/>
+            <NavButton
+                uuid={"testfromreact"}
+                timestamp={"today"}
+                activity={"start"}
+                to={"/keynum"}/>
         </>
     )
 }
