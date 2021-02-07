@@ -27,7 +27,7 @@ export default function EventButton(props) {
                 alignItems: "center",
             }}
         >
-            <Button className="NavButton"
+            <Button className="EventButton"
                     variant="primary" size="lg"
                     onClick={navigate}
             >
