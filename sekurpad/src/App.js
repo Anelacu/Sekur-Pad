@@ -9,7 +9,7 @@ function App() {
         <Router>
             <Switch>
                 <Route path="/" exact component={StartPage}/>
-                <Route path="/keynum" exact component={KeynumPage}/>
+                <Route path="/keynum/:pin" exact component={KeynumPage}/>
             </Switch>
         </Router>
     );

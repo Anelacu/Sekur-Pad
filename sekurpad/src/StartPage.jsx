@@ -1,6 +1,7 @@
 import React from "react";
-import EventButton from "./EventButton";
+import EventButtonStart from "./EventButtonStart";
 
+// TODO: get rid of api pop stuff
 export default function StartPage() {
     const pin = 9468;
     return (
@@ -11,11 +12,12 @@ export default function StartPage() {
                 }}
             >
                 Your pin number is: {pin}</h2>
-            <EventButton
+            <EventButtonStart
                 uuid={"testfromreact"}
                 timestamp={"today"}
                 activity={"start"}
-                to={"/keynum"}/>
+                to={"/keynum"}
+                pin={pin.toString()}/>
         </>
     )
 }

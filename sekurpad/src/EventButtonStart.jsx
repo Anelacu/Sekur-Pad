@@ -4,10 +4,11 @@ import {useHistory} from 'react-router-dom';
 import axios from "axios";
 import {ApiEndPoints} from "./ApiEndPoints";
 
-export default function EventButton(props) {
+export default function EventButtonStart(props) {
     let history = useHistory();
 
     function navigate() {
+        // TODO: hard code request here instead of using props
         axios.post(ApiEndPoints.createLog, {
             userUuid: props.uuid,
             timestamp: props.timestamp,
@@ -16,7 +17,7 @@ export default function EventButton(props) {
             .then(function (res) {
                 console.log(res);
             });
-        history.push(props.to);
+        history.push('/keynum/' + props.pin);
     }
 
     return (
