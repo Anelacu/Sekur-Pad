@@ -1,4 +1,4 @@
-import StartPage from "./start-page";
+import StartPage from "./StartPage";
 import React from "react";
 import {BrowserRouter as Router} from 'react-router-dom';
 import {Route, Switch} from "react-router";

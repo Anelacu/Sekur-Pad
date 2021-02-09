@@ -138,6 +138,5 @@ export default function KeynumPage() {
                 </Col>
             </Row>
         </Container>
-
     )
 }
