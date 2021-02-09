@@ -8,11 +8,10 @@ export default function EventButtonStart(props) {
     let history = useHistory();
 
     function navigate() {
-        // TODO: hard code request here instead of using props
         axios.post(ApiEndPoints.createLog, {
             userUuid: props.uuid,
-            timestamp: props.timestamp,
-            activity: props.activity
+            timestamp: new Date().toLocaleString(),
+            activity: "start"
         })
             .then(function (res) {
                 console.log(res);

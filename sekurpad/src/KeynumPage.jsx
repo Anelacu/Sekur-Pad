@@ -10,7 +10,6 @@ export default function KeynumPage(props) {
 
     function handleButton(e) {
         setPin(pin + e.target.value);
-        console.log(pin);
         if (pin.length === 4) {
             console.log(correctPin);
             if (pin === correctPin) {
