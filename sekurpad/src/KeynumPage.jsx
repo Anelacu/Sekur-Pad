@@ -4,6 +4,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import {Button} from "react-bootstrap";
 
+// TODO: create the instructions/number alterations and display them to user
 export default function KeynumPage(props) {
     const [pin, setPin] = useState("");
     const correctPin = props.match.params.pin;
@@ -14,8 +15,10 @@ export default function KeynumPage(props) {
             console.log(correctPin);
             if (pin === correctPin) {
                 console.log("yey");
+                // TODO: add some sort of event done success log creation request
             } else {
                 console.log("nae");
+                // TODO: add some sort of error event log creation request
             }
             setPin("");
         }
