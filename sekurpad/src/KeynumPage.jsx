@@ -3,8 +3,9 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import {Button} from "react-bootstrap";
+import axios from "axios";
+import {ApiEndPoints} from "./ApiEndPoints";
 
-// TODO: create the instructions/number alterations and display them to user
 export default function KeynumPage(props) {
     const [pin, setPin] = useState("");
     const correctPin = props.match.params.pin;
@@ -14,11 +15,23 @@ export default function KeynumPage(props) {
         if (pin.length === 4) {
             console.log(correctPin);
             if (pin === correctPin) {
-                console.log("yey");
-                // TODO: add some sort of event done success log creation request
+                axios.post(ApiEndPoints.createLog, {
+                    userUuid: props.uuid,
+                    timestamp: new Date().toLocaleString(),
+                    activity: "end"
+                })
+                    .then(function (res) {
+                        console.log(res);
+                    });
             } else {
-                console.log("nae");
-                // TODO: add some sort of error event log creation request
+                axios.post(ApiEndPoints.createLog, {
+                    userUuid: props.uuid,
+                    timestamp: new Date().toLocaleString(),
+                    activity: "error"
+                })
+                    .then(function (res) {
+                        console.log(res);
+                    });
             }
             setPin("");
         }
@@ -30,11 +43,11 @@ export default function KeynumPage(props) {
 
     return (
         <Container
-            style={{marginTop: '300px', marginLeft: '600px'}}
+            style={{marginTop: '12%', marginLeft: '30%'}}
         >
             <Row
                 style={{
-                    marginBottom: '30px'
+                    marginBottom: '20px'
                 }}>
                 <div
                     style={{
