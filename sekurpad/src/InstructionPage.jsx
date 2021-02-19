@@ -59,7 +59,7 @@ export default function InstructionPage() {
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    marginBottom: '2%'
+                    marginBottom: '5%'
                 }}
             >
                 <Button className="EventButton"

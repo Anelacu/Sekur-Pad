@@ -61,29 +61,26 @@ export default function EnterPinPage(props) {
 
     return (
         <>
-            <div
+            <p
                 style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center"
+                    marginTop: '3%',
+                    marginLeft: '30%',
+                    color: "red"
                 }}
             >
-                <p
-                    style={{
-                        textAlign: "center",
-                        color: "red"
-                    }}
-                >{"🔒" + msg}
-                </p>
-            </div>
+                {"🔒" + msg}
+            </p>
 
             <Container
                 style={{
-                    marginLeft: '35%',
+                    marginLeft: '30%',
                     marginTop: '3%'
                 }}
             >
-                <Row>
+                <Row
+                style={{
+                    marginLeft: '80px',
+                }}>
                     <Col
                         xs={1}
                     >
@@ -133,7 +130,11 @@ export default function EnterPinPage(props) {
                     </Col>
                 </Row>
 
-                <Row>
+                <Row
+                    style={{
+                        marginLeft: '93px'
+                    }}
+                >
                     <Col
                         xs={1}
                     >
@@ -187,7 +188,7 @@ export default function EnterPinPage(props) {
             </Container>
             <Container
                 style={{
-                    marginTop: '5%',
+                    marginTop: '2%',
                     marginLeft: '30%'
                 }}
             >
