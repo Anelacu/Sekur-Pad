@@ -6,12 +6,15 @@ export default function EndPage() {
             <h2
                 style={{
                     textAlign: "center",
-                    marginTop: '10%',
+                    marginTop: '35%',
                     marginBottom: '2%'
                 }}
             >
-                Thank you for participating! </h2>
-            
+                Thank you for participating! <br/><br/>
+
+                🔐💕
+            </h2>
+
         </>
     )
 }
