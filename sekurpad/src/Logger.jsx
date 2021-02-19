@@ -6,7 +6,7 @@ const user_uuid = uuid();
 const logActivity = function (activityName) {
     axios.post(ApiEndPoints.createLog, {
         userUuid: user_uuid,
-        timestamp: new Date().toLocaleString(),
+        timestamp: Date.now(),
         activity: activityName
     })
         .then(function (res) {
