@@ -14,29 +14,45 @@ export default function KeynumPage(props) {
     const correctPin = Stages[currentStageIndex]["target"];
     let history = useHistory();
 
+    function nextPage() {
+        var newIndex = parseInt(currentStageIndex.toString()) + 1
+        if (newIndex === EndStage) {
+            history.push('/end');
+        } else {
+            history.push('/start/' + newIndex.toString());
+        }
+    }
+
     function handleButton(e) {
-        setPin(pin + e.target.value);
-        logActivity("Key " + e.target.value + " pressed at stage: " + currentStageIndex);
-        if (pin.length === 4) {
-            console.log(correctPin);
-            if (pin === correctPin) {
+        var newPin = pin + e.target.value;
+        setPin(newPin);
+        logActivity("Key " + e.target.value + " pressed at stage: " + currentStageIndex +
+            ". Current pin: " + newPin);
+
+        if (newPin.length === 4) {
+            if (newPin === correctPin) {
                 logActivity("Correct pin entered at stage: " + currentStageIndex)
-                var newIndex = parseInt(currentStageIndex.toString()) + 1
-                if (newIndex === EndStage) {
-                    history.push('/end');
-                } else {
-                    history.push('/start/' + newIndex.toString());
-                }
+                nextPage();
             } else {
-                logActivity("User errored at stage: " + currentStageIndex);
+                logActivity("Wrong pin entered at stage: " + currentStageIndex +
+                    ". Pin: " + newPin);
+                // TODO: display that pin was wrong
             }
             setPin("");
         }
     }
 
+
     function handleButtonDel() {
-        setPin(pin.slice(0, -1));
-        logActivity("Delete pressed at stage: " + currentStageIndex);
+        var newPin = pin.slice(0, -1);
+        setPin(newPin);
+        logActivity("Delete pressed at stage: " + currentStageIndex +
+            ". Current pin: " + newPin);
+    }
+
+    function handleButtonClear() {
+        setPin("");
+        logActivity("Pin cleared at stage: " + currentStageIndex);
     }
 
     return (
@@ -286,10 +302,9 @@ export default function KeynumPage(props) {
                         xs={2}
                     >
                         <Button variant="primary" size="lg" block
-                            value={""}
-                            onClick={e => handleButton(e)}
+                            onClick={e => handleButtonClear()}
                         >
-                            Submit
+                            Clear
                         </Button>
                     </Col>
                     <Col
@@ -307,7 +322,6 @@ export default function KeynumPage(props) {
                         xs={2}
                     >
                         <Button variant="primary" size="lg" block
-                            value={"9"}
                             onClick={handleButtonDel}
                         >
                             DEL
