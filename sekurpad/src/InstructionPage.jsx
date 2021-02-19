@@ -1,12 +1,12 @@
 import React from "react";
-import {Button} from "react-bootstrap";
-import {useHistory} from "react-router-dom";
+import { Button } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 
 export default function InstructionPage() {
     let history = useHistory();
 
     function navigate() {
-        history.push('/start');
+        history.push('/start/' + '1');
     }
 
     return (
@@ -18,7 +18,7 @@ export default function InstructionPage() {
                     marginBottom: '2%'
                 }}
             >
-                Lorem Ipsum</h2>
+                Instructions for participants</h2>
             <p
                 style={{
                     marginLeft: '15%',
@@ -48,8 +48,8 @@ export default function InstructionPage() {
                 }}
             >
                 <Button className="EventButton"
-                        variant="primary" size="lg"
-                        onClick={navigate}
+                    variant="primary" size="lg"
+                    onClick={navigate}
                 >
                     Start
                 </Button>

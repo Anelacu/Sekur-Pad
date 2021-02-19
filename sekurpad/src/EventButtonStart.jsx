@@ -16,7 +16,7 @@ export default function EventButtonStart(props) {
             .then(function (res) {
                 console.log(res);
             });
-        history.push('/keynum/' + props.pin);
+        history.push('/keynum/' + props.stage + "/pin=" + props.pin);
     }
 
     return (

@@ -1,14 +1,19 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import {Button} from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import axios from "axios";
-import {ApiEndPoints} from "./ApiEndPoints";
+import { ApiEndPoints } from "./ApiEndPoints";
+import { Stages } from "./Stages";
+import { useHistory } from "react-router-dom";
 
 export default function KeynumPage(props) {
     const [pin, setPin] = useState("");
-    const correctPin = props.match.params.pin;
+    const currentStageIndex = props.match.params.stage;
+    const mods = Stages[currentStageIndex]["mods"];
+    const correctPin = Stages[currentStageIndex]["target"];
+    let history = useHistory();
 
     function handleButton(e) {
         setPin(pin + e.target.value);
@@ -23,6 +28,8 @@ export default function KeynumPage(props) {
                     .then(function (res) {
                         console.log(res);
                     });
+                var newIndex = parseInt(currentStageIndex.toString()) + 1
+                history.push('/start/' + newIndex.toString());
             } else {
                 axios.post(ApiEndPoints.createLog, {
                     userUuid: props.uuid,
@@ -108,7 +115,7 @@ export default function KeynumPage(props) {
                                 fontSize: "25px",
                             }}
                         >
-                            +0
+                            {mods[0]}
                         </p>
                     </Col>
 
@@ -120,7 +127,7 @@ export default function KeynumPage(props) {
                                 fontSize: "25px",
                             }}
                         >
-                            +0
+                            {mods[1]}
                         </p>
                     </Col>
 
@@ -132,7 +139,7 @@ export default function KeynumPage(props) {
                                 fontSize: "25px",
                             }}
                         >
-                            -2
+                            {mods[2]}
                         </p>
                     </Col>
 
@@ -144,7 +151,7 @@ export default function KeynumPage(props) {
                                 fontSize: "25px",
                             }}
                         >
-                            +1
+                            {mods[3]}
                         </p>
                     </Col>
                 </Row>
@@ -181,8 +188,8 @@ export default function KeynumPage(props) {
                         xs={2}
                     >
                         <Button variant="primary" size="lg" block
-                                value={"1"}
-                                onClick={e => handleButton(e)}
+                            value={"1"}
+                            onClick={e => handleButton(e)}
                         >
                             1
                         </Button>
@@ -191,8 +198,8 @@ export default function KeynumPage(props) {
                         xs={2}
                     >
                         <Button variant="primary" size="lg" block
-                                value={"2"}
-                                onClick={e => handleButton(e)}
+                            value={"2"}
+                            onClick={e => handleButton(e)}
                         >
                             2
                         </Button>
@@ -201,8 +208,8 @@ export default function KeynumPage(props) {
                         xs={2}
                     >
                         <Button variant="primary" size="lg" block
-                                value={"3"}
-                                onClick={e => handleButton(e)}
+                            value={"3"}
+                            onClick={e => handleButton(e)}
                         >
                             3
                         </Button>
@@ -216,8 +223,8 @@ export default function KeynumPage(props) {
                         xs={2}
                     >
                         <Button variant="primary" size="lg" block
-                                value={"4"}
-                                onClick={e => handleButton(e)}
+                            value={"4"}
+                            onClick={e => handleButton(e)}
                         >
                             4
                         </Button>
@@ -226,8 +233,8 @@ export default function KeynumPage(props) {
                         xs={2}
                     >
                         <Button variant="primary" size="lg" block
-                                value={"5"}
-                                onClick={e => handleButton(e)}
+                            value={"5"}
+                            onClick={e => handleButton(e)}
                         >
                             5
                         </Button>
@@ -236,8 +243,8 @@ export default function KeynumPage(props) {
                         xs={2}
                     >
                         <Button variant="primary" size="lg" block
-                                value={"6"}
-                                onClick={e => handleButton(e)}
+                            value={"6"}
+                            onClick={e => handleButton(e)}
                         >
                             6
                         </Button>
@@ -252,8 +259,8 @@ export default function KeynumPage(props) {
                         xs={2}
                     >
                         <Button variant="primary" size="lg" block
-                                value={"7"}
-                                onClick={e => handleButton(e)}
+                            value={"7"}
+                            onClick={e => handleButton(e)}
                         >
                             7
                         </Button>
@@ -262,8 +269,8 @@ export default function KeynumPage(props) {
                         xs={2}
                     >
                         <Button variant="primary" size="lg" block
-                                value={"8"}
-                                onClick={e => handleButton(e)}
+                            value={"8"}
+                            onClick={e => handleButton(e)}
                         >
                             8
                         </Button>
@@ -272,8 +279,8 @@ export default function KeynumPage(props) {
                         xs={2}
                     >
                         <Button variant="primary" size="lg" block
-                                value={"9"}
-                                onClick={e => handleButton(e)}
+                            value={"9"}
+                            onClick={e => handleButton(e)}
                         >
                             9
                         </Button>
@@ -288,8 +295,8 @@ export default function KeynumPage(props) {
                         xs={2}
                     >
                         <Button variant="primary" size="lg" block
-                                value={""}
-                                onClick={e => handleButton(e)}
+                            value={""}
+                            onClick={e => handleButton(e)}
                         >
                             Submit
                         </Button>
@@ -298,8 +305,8 @@ export default function KeynumPage(props) {
                         xs={2}
                     >
                         <Button variant="primary" size="lg" block
-                                value={"0"}
-                                onClick={e => handleButton(e)}
+                            value={"0"}
+                            onClick={e => handleButton(e)}
                         >
                             0
                         </Button>
@@ -309,8 +316,8 @@ export default function KeynumPage(props) {
                         xs={2}
                     >
                         <Button variant="primary" size="lg" block
-                                value={"9"}
-                                onClick={handleButtonDel}
+                            value={"9"}
+                            onClick={handleButtonDel}
                         >
                             DEL
                         </Button>
