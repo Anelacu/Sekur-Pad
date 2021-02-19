@@ -9,6 +9,7 @@ import { logActivity } from "./Logger";
 
 export default function EnterPinPage(props) {
     const [pin, setPin] = useState("");
+    const [msg, setMsg] = useState("");
     const currentStageIndex = props.match.params.stage;
     const mods = Stages[currentStageIndex]["mods"];
     const correctPin = Stages[currentStageIndex]["target"];
@@ -26,6 +27,7 @@ export default function EnterPinPage(props) {
     function handleButton(e) {
         var newPin = pin + e.target.value;
         setPin(newPin);
+        setMsg("");
         logActivity("Key " + e.target.value + " pressed at stage: " + currentStageIndex +
             ". Current pin: " + newPin);
 
@@ -36,7 +38,7 @@ export default function EnterPinPage(props) {
             } else {
                 logActivity("Wrong pin entered at stage: " + currentStageIndex +
                     ". Pin: " + newPin);
-                // TODO: display that pin was wrong
+                setMsg("The pin you entered is incorect. Please try again!")
             }
             setPin("");
         }
@@ -46,17 +48,35 @@ export default function EnterPinPage(props) {
     function handleButtonDel() {
         var newPin = pin.slice(0, -1);
         setPin(newPin);
+        setMsg("");
         logActivity("Delete pressed at stage: " + currentStageIndex +
             ". Current pin: " + newPin);
     }
 
     function handleButtonClear() {
         setPin("");
+        setMsg("");
         logActivity("Pin cleared at stage: " + currentStageIndex);
     }
 
     return (
         <>
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center"
+                }}
+            >
+                <p
+                    style={{
+                        textAlign: "center",
+                        color: "red"
+                    }}
+                >{"🔒" + msg}
+                </p>
+            </div>
+
             <Container
                 style={{
                     marginLeft: '35%',
