@@ -1,6 +1,5 @@
 import React from "react";
 import EventButtonStart from "./EventButtonStart";
-import uuid from "react-uuid";
 import { Stages } from "./Stages";
 
 export default function StartPage(props) {
@@ -17,7 +16,6 @@ export default function StartPage(props) {
             >
                 Your pin number is: {pin}</h2>
             <EventButtonStart
-                uuid={uuid()}
                 stage={currentStageIndex}
                 pin={pin.toString()} />
         </>

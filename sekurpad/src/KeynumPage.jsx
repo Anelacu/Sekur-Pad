@@ -3,10 +3,9 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import { Button } from "react-bootstrap";
-import axios from "axios";
-import { ApiEndPoints } from "./ApiEndPoints";
 import { Stages, EndStage } from "./Stages";
 import { useHistory } from "react-router-dom";
+import { logActivity } from "./Logger";
 
 export default function KeynumPage(props) {
     const [pin, setPin] = useState("");
@@ -17,32 +16,19 @@ export default function KeynumPage(props) {
 
     function handleButton(e) {
         setPin(pin + e.target.value);
+        logActivity("Key " + e.target.value + " pressed at stage: " + currentStageIndex);
         if (pin.length === 4) {
             console.log(correctPin);
             if (pin === correctPin) {
-                axios.post(ApiEndPoints.createLog, {
-                    userUuid: props.uuid,
-                    timestamp: new Date().toLocaleString(),
-                    activity: "end"
-                })
-                    .then(function (res) {
-                        console.log(res);
-                    });
+                logActivity("Correct pin entered at stage: " + currentStageIndex)
                 var newIndex = parseInt(currentStageIndex.toString()) + 1
                 if (newIndex === EndStage) {
                     history.push('/end');
-                 } else {
+                } else {
                     history.push('/start/' + newIndex.toString());
                 }
             } else {
-                axios.post(ApiEndPoints.createLog, {
-                    userUuid: props.uuid,
-                    timestamp: new Date().toLocaleString(),
-                    activity: "error"
-                })
-                    .then(function (res) {
-                        console.log(res);
-                    });
+                logActivity("User errored at stage: " + currentStageIndex);
             }
             setPin("");
         }
@@ -50,6 +36,7 @@ export default function KeynumPage(props) {
 
     function handleButtonDel() {
         setPin(pin.slice(0, -1));
+        logActivity("Delete pressed at stage: " + currentStageIndex);
     }
 
     return (
