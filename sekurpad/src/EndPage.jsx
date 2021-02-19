@@ -6,7 +6,7 @@ export default function EndPage() {
             <h2
                 style={{
                     textAlign: "center",
-                    marginTop: '35%',
+                    marginTop: '20%',
                     marginBottom: '2%'
                 }}
             >
