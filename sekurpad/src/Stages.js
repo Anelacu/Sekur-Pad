@@ -8,5 +8,8 @@ export const Stages = {
         "pin": "1234",
         "target": "2468",
         "mods": ["+1", "+2", "+3", "+4"],
-    }
+    },
+
 };
+
+export const EndStage = 3;

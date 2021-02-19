@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 import { Button } from "react-bootstrap";
 import axios from "axios";
 import { ApiEndPoints } from "./ApiEndPoints";
-import { Stages } from "./Stages";
+import { Stages, EndStage } from "./Stages";
 import { useHistory } from "react-router-dom";
 
 export default function KeynumPage(props) {
@@ -29,7 +29,11 @@ export default function KeynumPage(props) {
                         console.log(res);
                     });
                 var newIndex = parseInt(currentStageIndex.toString()) + 1
-                history.push('/start/' + newIndex.toString());
+                if (newIndex === EndStage) {
+                    history.push('/end');
+                 } else {
+                    history.push('/start/' + newIndex.toString());
+                }
             } else {
                 axios.post(ApiEndPoints.createLog, {
                     userUuid: props.uuid,

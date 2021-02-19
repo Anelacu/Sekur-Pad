@@ -1,14 +1,6 @@
 import React from "react";
-import { Button } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
 
-export default function InstructionPage() {
-    let history = useHistory();
-
-    function navigate() {
-        history.push('/start/' + '1');
-    }
-
+export default function EndPage() {
     return (
         <>
             <h2
