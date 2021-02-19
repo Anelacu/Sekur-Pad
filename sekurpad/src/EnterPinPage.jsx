@@ -7,7 +7,7 @@ import { Stages, EndStage } from "./Stages";
 import { useHistory } from "react-router-dom";
 import { logActivity } from "./Logger";
 
-export default function KeynumPage(props) {
+export default function EnterPinPage(props) {
     const [pin, setPin] = useState("");
     const currentStageIndex = props.match.params.stage;
     const mods = Stages[currentStageIndex]["mods"];
@@ -19,7 +19,7 @@ export default function KeynumPage(props) {
         if (newIndex === EndStage) {
             history.push('/end');
         } else {
-            history.push('/start/' + newIndex.toString());
+            history.push('/show_pin/' + newIndex.toString());
         }
     }
 

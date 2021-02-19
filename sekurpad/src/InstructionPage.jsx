@@ -6,7 +6,7 @@ export default function InstructionPage() {
     let history = useHistory();
 
     function navigate() {
-        history.push('/start/' + '1');
+        history.push('/show_pin/' + '1');
     }
 
     return (
