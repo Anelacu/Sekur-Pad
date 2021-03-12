@@ -1,8 +1,8 @@
 import axios from "axios";
+import { nanoid } from 'nanoid'
 import { ApiEndPoints } from "./ApiEndPoints";
-import uuid from "react-uuid";
 
-const user_uuid = uuid();
+const user_uuid = nanoid() + "_" + new Date().toISOString();
 const logActivity = function (activityName) {
     axios.post(ApiEndPoints.createLog, {
         userUuid: user_uuid,
